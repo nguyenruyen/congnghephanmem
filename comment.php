@@ -34,21 +34,19 @@ try {
 	$comment = $_POST['comment'];	
 	$idFilm = $_GET['id'];
 
-	if ($dbh) {
+	if (isset($dbh)) {
 		$sql = "SELECT * FROM `user` WHERE TENUSER LIKE '$name' AND PASSWORD LIKE '$password' and USERNAME LIKE '$email'";
 		$stmt = $dbh->prepare($sql);
 		if ($stmt->execute()) {
 			# code..
-			$idUser = $stmt->fetchAll()[0]['IDUSER'];
+			$idUser = @$stmt->fetchAll()[0]['IDUSER'];
 			$stmt->closeCursor();
-
 			$dataUpload = [
 				'idUser' => $idUser,
 				'comment' => $comment,
 				'idFilm' => $idFilm,
 				'time' => date("Y-m-d h:i:sa"),
 			];
-
 
 			$insert = "INSERT INTO binhluan (NAME, PHIMCOMMENT, NOIDUNG, TIME) VALUES (:idUser, :idFilm, :comment, :time)";		
 			$stmt = $dbh->prepare($insert);
