@@ -98,7 +98,7 @@
 		}
 		?>
 	  <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
-      <p class="mt-5 mb-3 text-muted">Anh Vinh & Thu Phương & Ngọc Hiền</p>
+     
     </form>
 	
 	
